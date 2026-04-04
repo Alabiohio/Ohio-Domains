@@ -1,36 +1,135 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ohio Domains
 
-## Getting Started
+**Find the cheapest domain across providers — GoDaddy & Name.com MVP**
 
-First, run the development server:
+---
+
+## **🌐 Overview**
+
+Ohio Domains helps users:
+
+* Search for a domain name once
+* Compare prices across **GoDaddy** and **Name.com**
+* See **renewal costs**
+* Highlight the **cheapest registrar**
+* Click direct links to buy from the provider
+
+Future versions will support more registrars, alternative TLDs, and user accounts.
+
+---
+
+## **📦 Features**
+
+* Domain search bar
+* Availability check via API
+* Price comparison table: registrar, price, renewal, buy link
+* Cheapest price highlight
+* Mobile-friendly UI
+* Serverless API backend (Next.js API routes)
+
+---
+
+## **🛠️ Tech Stack**
+
+| Layer    | Technology / Tool                                           |
+| -------- | ----------------------------------------------------------- |
+| Frontend | React / Next.js                                             |
+| Styling  | Tailwind CSS / Material UI                                  |
+| Backend  | Node.js (Next.js API routes)                                |
+| APIs     | GoDaddy API, Name.com API                                   |
+| Hosting  | Vercel (frontend + serverless API)                          |
+| Database | Optional: MongoDB / Supabase (for caching / saved searches) |
+
+---
+
+## **⚡ Quick Start**
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/yourusername/ohio-domains.git
+cd ohio-domains
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+# or
+yarn install
+```
+
+3. **Add API keys**
+   Create a `.env.local` file in the root:
+
+```
+GODADDY_API_KEY=your_godaddy_api_key
+GODADDY_API_SECRET=your_godaddy_api_secret
+NAMECOM_API_KEY=your_namecom_api_key
+NAMECOM_USERNAME=your_namecom_username
+```
+
+4. **Run the development server**
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## **🧩 Project Structure**
 
-## Learn More
+```
+/pages
+  index.js       # Main frontend page with search bar + results
+  /api
+    check.js     # Serverless API route for domain availability + pricing
+/components
+  SearchBar.js   # Domain input component
+  ResultsTable.js# Displays prices and highlights cheapest
+/styles
+  globals.css    # Tailwind CSS styles
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## **🔧 API Integration**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* **GoDaddy API**: Check domain availability and pricing
+  [Developer Docs](https://developer.godaddy.com)
+* **Name.com API**: Check domain availability and pricing
+  [Developer Docs](https://www.name.com/developers)
 
-## Deploy on Vercel
+**Example API Response:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```json
+{
+  "domain": "example.com",
+  "available": true,
+  "prices": [
+    { "registrar": "GoDaddy", "price": 12.99, "renewal": 14.99, "buyLink": "https://..." },
+    { "registrar": "Name.com", "price": 11.88, "renewal": 13.88, "buyLink": "https://..." }
+  ],
+  "cheapest": "Name.com"
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## **📈 Next Steps / Enhancements**
+
+* Add more registrars (Namecheap, Porkbun, Google Domains)
+* Alternative TLD suggestions if domain unavailable
+* User accounts and saved searches
+* Price alerts and notifications
+* Analytics for trending domains
+
+---
+
+## **⚖️ License**
+
+MIT License © 2026 Ohio Codespace
